@@ -1,5 +1,5 @@
-import { SelectDisplay } from './SelectDisplay'
-import SelectCompare from './SelectCompare'
+import { SelectDisplay } from '../SelectOption/SelectDisplay'
+import SelectCompare from '../SelectOption/SelectCompare'
 
 function LayoutSelect() {
     return (

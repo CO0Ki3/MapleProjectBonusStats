@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import styled from 'styled-components';
-import { AddOptionWeapon, AddOptionAcc, Step } from './BonusStatsList';
+import { AddOptionWeapon, AddOptionAcc, Step } from '../ArrayList/BonusStatsList';
 
 const SelectBox = styled.div`
   border: 1px solid black;
