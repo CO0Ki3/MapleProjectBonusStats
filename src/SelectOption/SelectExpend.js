@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import styled from 'styled-components';
-import { AddOptionWeapon, AddOptionAcc } from '../ArrayList/BonusStatsList';
+import { AddOptionWeapon, AddOptionAcc, Step } from '../ArrayList/BonusStatsList';
+import Select from './Select';
 
 const SelectBox = styled.div`
   border: 1px solid black;
@@ -59,7 +60,9 @@ function SelectWeapon({ onChange, value }) {
 const SelectExpendAcc = () => {
     const [ selectValues, setSelectValues ] = useState([]); //복제 키 state
 
-    const [ isNotVisible, setIsNotVisible ] = useState(false);
+    const [ selectStepValue, setSelectStepValue ] = useState('');
+
+    const [ isNotVisible, setIsNotVisible ] = useState(false); //선택 안함
 
     const makeKey = useCallback(length => {
         let result = '';
@@ -84,6 +87,10 @@ const SelectExpendAcc = () => {
             )));
         }
     }
+    
+    const handleChangeStepValue = ({ target: { value } }) => {
+        setSelectStepValue(value);
+    };
 
     const handleDeleteInnerSelectClosure = key => {
 
@@ -102,11 +109,13 @@ const SelectExpendAcc = () => {
                         onChange={handleChangeInnerSelectClosure(selectValue.key)}
                     />
                     <p>text : { selectValue.text } length : { selectValues.length } Bool : { isNotVisible.toString() }</p>
+                    <Select onChange={ handleChangeStepValue } options={ Step }/>
+                    <p>Step : { selectStepValue }</p>
                     <Delete onClick={handleDeleteInnerSelectClosure(selectValue.key)}>삭제</Delete>
                 </SelectBox>
                 )
             )}
-            { selectValues.length === 4 || isNotVisible === true || <SelectAcc onChange={handelChangeOption} AddOptionAcc={AddOptionAcc} value='select' /> }
+            { selectValues.length === 4 || isNotVisible === true || <SelectBox><SelectAcc onChange={handelChangeOption} AddOptionAcc={AddOptionAcc} value='select' /><Select onChange={ handleChangeStepValue } options={ Step }/></SelectBox> }
         </>
     )
 }

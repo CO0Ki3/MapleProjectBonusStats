@@ -16,7 +16,6 @@ const WeaponListDisplay = () => {
     const handelChangeWeaponSort = ({ target: { value } }) => {
         setSelectWeaponSortValue(value);
     };
-
     
     return(
         <div>
