@@ -1,20 +1,13 @@
-import { Step } from '../ArrayList/BonusStatsList';
-
 function SelectOption({ lists, onChange }) {
 
-    const handelChangeOption = ({ target: { value } }) => {
+    const handleChangeOption = ({ target: { value } }) => {
         onChange(lists.filter(Option => Option !== value).filter(option => option.value === value)[0]);
+        console.log(lists.text)
     }
-
-    {
-        lists === undefined ||
-        console.log(lists)
-    }
-
     return (
         <>
             {lists === undefined ||
-                <select onChange={ handelChangeOption } value={ lists }>
+                <select onChange={ handleChangeOption } value={ lists.text }>
                     {
                         lists.map(option => (
                             <option key={lists.value} value={option.value}>

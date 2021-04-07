@@ -18,11 +18,6 @@ const Delete = styled.div`
 
 function SelectBox(props) {
 
-    {
-        props.options === undefined ||
-        console.log(props.options)
-    }
-
     const [ selectValues, setSelectValues ] = useState([]);
 
     const [ isVisible, setIsvisible ] = useState(true);
@@ -31,20 +26,30 @@ function SelectBox(props) {
         const key = uuidv4();
         setSelectValues([...selectValues, { ...value, key }]);
         setIsvisible(value.value !== "none");
+        console.log(value.text)
     };
 
-    const handleChangeStep = value => {
-        setSelectValues([...selectValues, { ...value }]);
+    const handleChangeStep = step => {
+        console.log(step);
+        setSelectValues([...selectValues, { ...step }]);
     };
 
     const handleChangeInnerSelectClosure = key => {
-
         return value => {
             setSelectValues(selectValues.map(selectValue => (
                 selectValue.key === key ? { key, ...value } : selectValue
             )));
         }
     };
+
+    const handleChangeInnerStepClosure = key => {
+
+        return step => {
+            setSelectValues(selectValues.map(selectValue => (
+                selectValue.key === key ? { key, ...step } : selectValue
+            )));
+        }
+    }
 
     const handleDeleteInnerSelectClosure = key => {
 
@@ -58,7 +63,9 @@ function SelectBox(props) {
             { props.options === undefined || selectValues.map(selectValue => (
                 <SelectBoxStyle key={ selectValue.key }>
                     <SelectOption lists={props.options} onChange={handleChangeInnerSelectClosure(selectValue.key)}/>
-                    <SelectStep onChange={handleChangeInnerSelectClosure(selectValue.key)}/>
+                    <p>Value : { selectValue.value }</p>
+                    <SelectStep onChange={handleChangeInnerStepClosure(selectValue.key)}/>
+                    <p>Step : { selectValue.step }</p>
                     <Delete onClick={handleDeleteInnerSelectClosure(selectValue.key)}>삭제</Delete>
                 </SelectBoxStyle>
             ))}
