@@ -21,35 +21,22 @@ function SelectBox(props) {
     const [ selectValues, setSelectValues ] = useState([]);
 
     const [ isVisible, setIsvisible ] = useState(true);
-
+    
     const handleChangeOption = value => {
         const key = uuidv4();
         setSelectValues([...selectValues, { ...value, key }]);
         setIsvisible(value.value !== "none");
-        console.log(value.text)
-    };
-
-    const handleChangeStep = step => {
-        console.log(step);
-        setSelectValues([...selectValues, { ...step }]);
+        
     };
 
     const handleChangeInnerSelectClosure = key => {
+        
         return value => {
             setSelectValues(selectValues.map(selectValue => (
                 selectValue.key === key ? { key, ...value } : selectValue
             )));
         }
     };
-
-    const handleChangeInnerStepClosure = key => {
-
-        return step => {
-            setSelectValues(selectValues.map(selectValue => (
-                selectValue.key === key ? { key, ...step } : selectValue
-            )));
-        }
-    }
 
     const handleDeleteInnerSelectClosure = key => {
 
@@ -62,14 +49,15 @@ function SelectBox(props) {
         <>
             { props.options === undefined || selectValues.map(selectValue => (
                 <SelectBoxStyle key={ selectValue.key }>
-                    <SelectOption lists={props.options} onChange={handleChangeInnerSelectClosure(selectValue.key)}/>
+                    <SelectOption lists={props.options} onChange={handleChangeInnerSelectClosure(selectValue.key)} value={ selectValue.value }/>
                     <p>Value : { selectValue.value }</p>
-                    <SelectStep onChange={handleChangeInnerStepClosure(selectValue.key)}/>
-                    <p>Step : { selectValue.step }</p>
+                    {/* <SelectStep onChange={handleChangeInnerStepClosure(selectValue.key)}/>
+                    <p>Step : { selectValue.step }</p> */}
                     <Delete onClick={handleDeleteInnerSelectClosure(selectValue.key)}>삭제</Delete>
                 </SelectBoxStyle>
             ))}
-            { props.options === undefined || selectValues.length === 4 || isVisible === false || <SelectBoxStyle><SelectOption onChange={handleChangeOption} lists={ props.options } value='select' /><SelectStep onChange={ handleChangeStep } /></SelectBoxStyle> }
+            {/* { props.options === undefined || selectValues.length === 4 || isVisible === false || <SelectBoxStyle><SelectOption onChange={handleChangeOption} lists={ props.options } /><SelectStep onChange={ handleChangeStep } /></SelectBoxStyle> } */}
+            { props.options === undefined || selectValues.length === 4 || isVisible === false || <SelectBoxStyle><SelectOption onChange={handleChangeOption} lists={ props.options } value='Select'/></SelectBoxStyle> }
         </>
     )
 }

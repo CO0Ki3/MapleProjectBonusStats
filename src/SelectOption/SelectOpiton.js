@@ -1,13 +1,12 @@
-function SelectOption({ lists, onChange }) {
+function SelectOption({ lists, onChange, value }) {
 
     const handleChangeOption = ({ target: { value } }) => {
-        onChange(lists.filter(Option => Option !== value).filter(option => option.value === value)[0]);
-        console.log(lists.text)
+        onChange(lists.filter(option => option.value === value)[0]);
     }
     return (
         <>
             {lists === undefined ||
-                <select onChange={ handleChangeOption } value={ lists.text }>
+                <select onChange={ handleChangeOption } value = {value }>
                     {
                         lists.map(option => (
                             <option key={lists.value} value={option.value}>
