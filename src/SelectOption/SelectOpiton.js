@@ -6,10 +6,10 @@ function SelectOption({ lists, onChange, value }) {
     return (
         <>
             {lists === undefined ||
-                <select onChange={ handleChangeOption } value = {value }>
+                <select onChange={ handleChangeOption } value = { value }>
                     {
                         lists.map(option => (
-                            <option key={lists.value} value={option.value}>
+                            <option key={option.value} value={option.value}>
                                 {option.text}
                             </option>
                         ))

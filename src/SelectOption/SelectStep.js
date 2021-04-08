@@ -1,16 +1,16 @@
-import { Step } from '../ArrayList/StepList'
+import Step from '../ArrayList/StepList'
 
-function SelectStep({ onChange }) {
+function SelectStep({ onChange, value }) {
 
     const handleChangeStepOption = ({ target: { step } }) => {
         onChange(Step.filter(Option => Option !== step).filter(option => option.step === step)[0]);
     }
 
     return (
-    <select onChange={ handleChangeStepOption } >
+    <select onChange={ handleChangeStepOption } value={ value } >
                     {
                         Step.map(option => (
-                            <option key={Step.step} value={option.step}>
+                            <option key={option.step} value={option.step}>
                                 {option.text}
                             </option>
                         ))
