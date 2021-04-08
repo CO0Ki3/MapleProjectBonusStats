@@ -77,7 +77,8 @@ const AddOptionSortSole = [
     }
 ];
 
-const AddOptionSortWeapon = [
+const AddOptionWeapon = [
+    ...AddOptionSortSole,
     {
         value: "bossdamage",
         text: "보스몬스터 공격 시 데미지 %"
@@ -88,7 +89,8 @@ const AddOptionSortWeapon = [
     }
 ];
 
-const AddOptionSortAcc = [
+const AddOptionAcc = [
+    ...AddOptionSortSole,
     {
         value: "speed",
         text: "이동속도"
@@ -99,41 +101,6 @@ const AddOptionSortAcc = [
     }
 ];
 
-const Step = [
-    {
-        step: "",
-        text: "Select"
-    },
-    {
-        step: "first",
-        text: "1추"
-    },
-    {
-        step: "second",
-        text: "2추"
-    },
-    {
-        step: "third",
-        text: "3추"
-    },
-    {
-        step: "forth",
-        text: "4추"
-    },
-    {
-        step: "fifth",
-        text: "5추"
-    }
-];
 
-const AddOptionWeapon = [
-    ...AddOptionSortSole,
-    ...AddOptionSortWeapon
-];
 
-const AddOptionAcc = [
-    ...AddOptionSortSole,
-    ...AddOptionSortAcc
-];
-
-export { AddOptionWeapon, AddOptionAcc, Step };
+export { AddOptionWeapon, AddOptionAcc };

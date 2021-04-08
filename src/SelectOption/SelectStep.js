@@ -1,4 +1,4 @@
-import { Step } from '../ArrayList/BonusStatsList'
+import { Step } from '../ArrayList/StepList'
 
 function SelectStep({ onChange }) {
 
