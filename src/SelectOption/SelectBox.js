@@ -25,30 +25,35 @@ function SelectBox(props) {
       (selectValue) => selectValue.option.value
     );
 
-    if (typeof props.options !== "undefined") {
+    if (
+      selectOptionValues.some(
+        (v) => ["str", "dex", "int", "luk"].indexOf(v) > -1
+      )
+    ) {
+      setOptions(
+        props.options
+          .slice(4)
+          .filter((option) => !selectOptionValues.includes(option.value))
+      );
+    } else {
       setOptions(
         props.options.filter(
           (option) => !selectOptionValues.includes(option.value)
         )
       );
+      console.log(selectOptionValues);
     }
   }, [selectValues, props.options]);
 
   const handleChangeOption = (value) => {
     const key = uuidv4();
-    const _value = {
+    const items = {
       key,
       option: value,
       step: { value: "", text: "Select" },
     };
-
-    setSelectValues([...selectValues, _value]);
+    setSelectValues([...selectValues, items]);
   };
-
-  // const handleChangeStep = value => {
-  //   const key = uuidv4();
-  //   setSelectSteps([...selectSteps, { ...value, key }]);
-  // };
 
   const handleChangeInnerOptionClosure = (key) => {
     return (value) => {
@@ -82,7 +87,7 @@ function SelectBox(props) {
     };
   };
 
-  return props.options ? (
+  return (
     <>
       {selectValues.map((selectValue) => (
         <SelectBoxStyle key={selectValue.key}>
@@ -92,23 +97,17 @@ function SelectBox(props) {
             value={selectValue.option}
           />
           <p>Value : {selectValue.option.value}</p>
-          {selectValue.option.value !== "" && (
-            <>
-              <SelectTemp
-                lists={Step}
-                onChange={handleChangeInnerStepClosure(selectValue.key)}
-                value={selectValue.step}
-              />
-              <p>Step : {selectValue.step.text}</p>
-            </>
-          )}
-
+          <SelectTemp
+            lists={Step}
+            onChange={handleChangeInnerStepClosure(selectValue.key)}
+            value={selectValue.step}
+          />
+          <p>Step : {selectValue.step.text}</p>
           <Delete onClick={handleDeleteInnerSelectClosure(selectValue.key)}>
             삭제
           </Delete>
         </SelectBoxStyle>
       ))}
-      {/* { props.options === undefined || selectValues.length === 4 || isVisible === false || <SelectBoxStyle><SelectOption onChange={handleChangeOption} lists={ props.options } value='Select'/><SelectStep onChange={ handleChangeStep } value='Select' /></SelectBoxStyle> } */}
       {selectValues.length === 4 || (
         <SelectBoxStyle>
           <SelectTemp
@@ -119,8 +118,6 @@ function SelectBox(props) {
         </SelectBoxStyle>
       )}
     </>
-  ) : (
-    <></>
   );
 }
 

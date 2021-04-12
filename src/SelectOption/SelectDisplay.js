@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import Select from './Select';
-import { ObjectList } from '../ArrayList/ObjectList';
-import SelectCompare from './SelectCompare';
+import React, { useState } from "react";
+import Select from "./Select";
+import { ObjectList } from "../ArrayList/ObjectList";
+import SelectCompare from "./SelectCompare";
 
 function SelectDisplay() {
-    const [ selectObjectValue, setselectObjectValue ] = useState('');
-    
-    const handleChangeObjectValue = ({ target: { value } }) => {
-        setselectObjectValue(value);
-    };
+  const [selectObjectValue, setselectObjectValue] = useState("");
 
-    return(
-        <div>
-            <Select onChange={ handleChangeObjectValue } options={ ObjectList }/>
-            <p>Object : { selectObjectValue }</p>
-            <SelectCompare value={ selectObjectValue }/>
-        </div>
-    );
+  const handleChangeObjectValue = ({ target: { value } }) => {
+    setselectObjectValue(value);
+  };
+
+  return (
+    <div>
+      <Select onChange={handleChangeObjectValue} options={ObjectList} />
+      <p>Object : {selectObjectValue}</p>
+      <SelectCompare value={selectObjectValue} />
+    </div>
+  );
 }
 
 export default SelectDisplay;
