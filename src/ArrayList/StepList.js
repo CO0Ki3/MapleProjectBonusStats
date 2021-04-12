@@ -1,26 +1,22 @@
 const Step = [
     {
-        step: "",
-        text: "Select"
-    },
-    {
-        step: "first",
+        value: "first",
         text: "1추"
     },
     {
-        step: "second",
+        value: "second",
         text: "2추"
     },
     {
-        step: "third",
+        value: "third",
         text: "3추"
     },
     {
-        step: "forth",
+        value: "forth",
         text: "4추"
     },
     {
-        step: "fifth",
+        value: "fifth",
         text: "5추"
     }
 ];

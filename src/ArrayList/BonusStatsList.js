@@ -1,13 +1,5 @@
 const AddOptionSortSole = [
     {
-        value: "",
-        text: "Select"
-    },
-    {
-        value: "none",
-        text: "선택 안함"
-    },
-    {
         value: "str",
         text: "STR"
     },
