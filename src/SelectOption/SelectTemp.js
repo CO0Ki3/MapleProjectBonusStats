@@ -2,6 +2,7 @@ function SelectTemp({ lists, onChange, value }) {
   const handleChangeOption = ({ target: { value } }) => {
     onChange(lists.filter((option) => option.value === value)[0]);
   };
+
   return (
     <>
       {lists === undefined || (

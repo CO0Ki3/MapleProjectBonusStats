@@ -3,12 +3,8 @@ import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import SelectTemp from "./SelectTemp";
 import Step from "../ArrayList/StepList";
+import { SelectBoxStyle } from './SelectStyle'
 
-const SelectBoxStyle = styled.div`
-  border: 1px solid black;
-  margin: 10px;
-  padding: 10px;
-`;
 
 const Delete = styled.div`
   color: blue;
@@ -41,7 +37,6 @@ function SelectBox(props) {
           (option) => !selectOptionValues.includes(option.value)
         )
       );
-      console.log(selectOptionValues);
     }
   }, [selectValues, props.options]);
 
@@ -91,7 +86,7 @@ function SelectBox(props) {
     <>
       {selectValues.map((selectValue) => (
         <SelectBoxStyle key={selectValue.key}>
-          <SelectTemp
+          <SelectTemp select_option
             lists={options}
             onChange={handleChangeInnerOptionClosure(selectValue.key)}
             value={selectValue.option}
