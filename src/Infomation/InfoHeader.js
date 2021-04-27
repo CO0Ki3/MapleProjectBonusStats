@@ -1,23 +1,27 @@
-import { Container, Toolbar, Box, makeStyles } from "@material-ui/core";
-// import { makeStyles } from "@material-ui/core/styles";
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import { Container, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles({
-  styles: {
-    backgroundColor: '#424242',
-    boxShadow: '0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
+  root: {
+    backgroundColor: "#424242",
   },
 });
 
 function InfoHeader() {
-
   const classes = useStyles();
-  return (
-    <Container MuiContainer-root MuiContainer-maxWidthLg className={classes.styles}>
-      <Toolbar MuiToolbar-root MuiToolbar-regular>
-        <Box MuiBox-root>메이플스토리 계산기</Box>
-      </Toolbar>
-    </Container>
-  );
+  return(
+    <AppBar position="static" className={classes.root}>
+      <Container maxWidth="lg">
+        <Toolbar disableGutters={true}>
+          <Typography variant="h6" className={classes.typo}>
+            메이플스토리 계산기
+          </Typography>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  )
 }
 
 export default InfoHeader;
