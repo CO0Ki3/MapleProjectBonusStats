@@ -1,9 +1,5 @@
 const ObjectList = [
   {
-    value: "",
-    text: "Select",
-  },
-  {
     value: "weapon",
     text: "무기",
   },
@@ -14,10 +10,6 @@ const ObjectList = [
 ];
 
 const WeaponList = [
-  {
-    value: "",
-    text: "Select",
-  },
   {
     value: "lv150Weap",
     text: "Lv.150 : 파프니르, 해방된 카이세리움",
@@ -37,10 +29,6 @@ const WeaponList = [
 ];
 
 const WeaponSort = [
-  {
-    value: "",
-    text: "Select",
-  },
   {
     value: "gards",
     text: "아대",
@@ -205,10 +193,6 @@ const WeaponSort = [
 
 const AccList = [
   {
-    value: "",
-    text: "Select",
-  },
-  {
     value: 100,
     text: "100제",
   },
@@ -247,10 +231,6 @@ const AccList = [
 ];
 
 const AccSort = [
-  {
-    value: "",
-    text: "Select",
-  },
   {
     value: "boss",
     text: "보스 장비(단, 혼목, 카혼목, 카벨뚝 제외)",

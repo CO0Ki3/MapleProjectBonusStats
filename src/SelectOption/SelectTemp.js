@@ -1,12 +1,32 @@
+import NativeSelect from '@material-ui/core/NativeSelect';
+import { makeStyles } from '@material-ui/core';
+
+const nativeSelectStyles = makeStyles({
+  root: {
+    "&.MuiInput-underline:before": {
+      borderBottomColor: "white",
+    },
+    "&.MuiInput-underline:after": {
+      borderBottomColor: "#E1831D",
+    },
+    "&.MuiInputBase-root": {
+      color: "white",
+    },
+  }
+})
+
 function SelectTemp({ lists, onChange, value }) {
   const handleChangeOption = ({ target: { value } }) => {
     onChange(lists.filter((option) => option.value === value)[0]);
   };
 
+  
+  const classes = nativeSelectStyles();
+
   return (
     <>
       {lists === undefined || (
-        <select onChange={handleChangeOption} value={value.value}>
+        <NativeSelect onChange={handleChangeOption} value={value.value} className={classes.root}>
           <option disabled value="">
             Select
           </option>
@@ -16,7 +36,7 @@ function SelectTemp({ lists, onChange, value }) {
                 {option.text}
               </option>
             ))}
-        </select>
+        </NativeSelect>
       )}
     </>
   );

@@ -1,7 +1,6 @@
 import { createMuiTheme, CssBaseline, MuiThemeProvider } from '@material-ui/core';
 import LayoutInfo from './Layout/LayoutInfo';
 import LayoutSelect from './Layout/LayoutSelect';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 const theme = createMuiTheme({
   overrides: {
@@ -22,8 +21,8 @@ const theme = createMuiTheme({
           color: "#E1831D",
           textDecoration: "none",
         },
-        select: {
-          appearance: "none",
+        option: {
+          color: "black",
         },
       },
     },
