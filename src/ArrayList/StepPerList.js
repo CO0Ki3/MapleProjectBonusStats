@@ -12,4 +12,4 @@ const PowerfulPercent = {
   "3": 0.2,
 };
 
-export { EternalPercent, PowerfulPercent };
+export { EternalPercent, PowerfulPercent }; 
