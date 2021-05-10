@@ -1,20 +1,18 @@
-import { EternalPercent, PowerfulPercent } from "../ArrayList/StepPerList";
+import { useState, useContext } from 'react';
+import {SortContext} from '../SelectOption/SelectListDisplay';
+import {ListContext} from '../SelectOption/SelectListDisplay';
 
-function Temp({ value, num }) {
-
-  const tempValue = value;
-
-  const tempKey = num;
-
-  if (parseInt(value, 10) === 7) {
-    return tempValue;
-  } else if (parseInt(value, 10) === 3) {
-    return tempValue;
-  } else if (value === "") {
-    return <></>;
-  } else {
-    return tempValue;
-  }
+ const Temp = () => {
+  const data1 = useContext(SortContext);
+  const data2 = useContext(ListContext);
+  console.log({data1});
+  console.log({data2});
+  return(
+    <>
+      <p>{data1}</p>
+      <p>{data2}</p>
+    </>
+  );
 }
 
 export default Temp;
