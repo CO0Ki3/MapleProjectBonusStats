@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import SelectTemp from "./SelectTemp";
 import Step from "../ArrayList/StepList";
+import Temp from "../Calc/Temp";
 import { SelectBoxStyle } from "./SelectStyle";
+
+export const StepContext = createContext();
+
+export const OptionContext = createContext();
 
 const Delete = styled.div`
   color: blue;
@@ -101,6 +106,11 @@ function SelectBox(props) {
           <Delete onClick={handleDeleteInnerSelectClosure(selectValue.key)}>
             삭제
           </Delete> <p>(나중에 아이콘으로 바꾸기)</p>
+          <StepContext.Provider value={selectValue.step.value}>
+            <OptionContext.Provider value={selectValue.option.value}>
+              <Temp />
+            </OptionContext.Provider>
+          </StepContext.Provider>
         </SelectBoxStyle>
       ))}
       {selectValues.length === 4 || (
