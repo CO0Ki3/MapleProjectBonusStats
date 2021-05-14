@@ -1,21 +1,33 @@
 import React, { useState, createContext } from "react";
 import Select from "./Select";
-import Temp from '../Calc/Temp';
+import Temp from "../Calc/Temp";
+
+const initialStore = {
+  sort: "",
+  list: "",
+};
 
 export const SortContext = createContext();
 export const ListContext = createContext();
+export const SelectListDisplayContext = createContext();
 
 function SelectListDisplay(props) {
   const [selectListValue, setSelectListValue] = useState("");
 
   const [selectSortListValue, setSelectSortListValue] = useState("");
 
+  const [store, setStore] = useState(initialStore);
+
   const handleChangeListValue = ({ target: { value } }) => {
     setSelectListValue(value);
+    setStore({list: value, sort: ""});
   };
+
+  console.log(store);
 
   const handleChangeSortList = ({ target: { value } }) => {
     setSelectSortListValue(value);
+    setStore({ list: "", sort: value });
   };
 
   return (
