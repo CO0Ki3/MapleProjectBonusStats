@@ -3,12 +3,8 @@ import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import SelectTemp from "./SelectTemp";
 import Step from "../ArrayList/StepList";
-import Temp from "../Calc/Temp";
 import { SelectBoxStyle } from "./SelectStyle";
-
-export const StepContext = createContext();
-
-export const OptionContext = createContext();
+import { useStore } from '../hook';
 
 const Delete = styled.div`
   color: blue;
@@ -19,6 +15,8 @@ const Delete = styled.div`
 function SelectBox(props) {
   const [selectValues, setSelectValues] = useState([]);
   const [options, setOptions] = useState([]);
+
+  const [store, setStore] = useStore('box');
 
   useEffect(() => {
     const selectOptionValues = selectValues.map(
@@ -52,6 +50,7 @@ function SelectBox(props) {
       step: { value: "", text: "Select" },
     };
     setSelectValues([...selectValues, items]);
+    setStore([...selectValues, items]);
   };
 
   const handleChangeInnerOptionClosure = (key) => {
@@ -73,6 +72,13 @@ function SelectBox(props) {
           selectValue.key === key
             ? { key, option: selectValue.option, step: value }
             : selectValue
+        ),
+        setStore(
+          store.map((store) =>
+            store.key === key
+            ? { key, option: store.option, step: value }
+            : store
+          )
         )
       );
     };
@@ -96,22 +102,15 @@ function SelectBox(props) {
             onChange={handleChangeInnerOptionClosure(selectValue.key)}
             value={selectValue.option}
           />
-          <p>Value : {selectValue.option.value}</p>
           <SelectTemp
             lists={Step}
             onChange={handleChangeInnerStepClosure(selectValue.key)}
             value={selectValue.step}
           />
-          <p>Step : {selectValue.step.text}</p>
           <Delete onClick={handleDeleteInnerSelectClosure(selectValue.key)}>
             삭제
           </Delete>{" "}
           <p>(나중에 아이콘으로 바꾸기)</p>
-          <StepContext.Provider value={selectValue.step.value}>
-            <OptionContext.Provider value={selectValue.option.value}>
-              <Temp />
-            </OptionContext.Provider>
-          </StepContext.Provider>
         </SelectBoxStyle>
       ))}
       {selectValues.length === 4 || (
