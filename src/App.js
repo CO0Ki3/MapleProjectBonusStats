@@ -1,6 +1,8 @@
 import { createMuiTheme, CssBaseline, MuiThemeProvider } from '@material-ui/core';
 import LayoutInfo from './Layout/LayoutInfo';
 import LayoutSelect from './Layout/LayoutSelect';
+import LayoutCalc from './Layout/LayoutCalc';
+import {StoreProvider} from './hook';
 
 const theme = createMuiTheme({
   overrides: {
@@ -31,13 +33,14 @@ const theme = createMuiTheme({
 
 function App() {
   return (
-    <>
+    <StoreProvider>
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
         <LayoutInfo />
         <LayoutSelect />
+        <LayoutCalc />
       </MuiThemeProvider>
-    </>
+    </StoreProvider>
   );
 }
 
