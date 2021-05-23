@@ -1,26 +1,26 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from "react";
 
 const StoreContext = React.createContext(null);
 
 const initialStore = {
-  list: '',
-  sort: '',
+  list: "",
+  sort: "",
   box: [],
-}
+};
 
-export const StoreProvider = props => {
-  const [ store, setStore ] = useState(initialStore);
+export const StoreProvider = (props) => {
+  const [store, setStore] = useState(initialStore);
 
   return (
-    <StoreContext.Provider value={[ store, setStore ]}>
+    <StoreContext.Provider value={[store, setStore]}>
       {props.children}
     </StoreContext.Provider>
-  )
-}
+  );
+};
 
-export const useStore = (key=undefined) => {
-  const [ store, setStore ] = useContext(StoreContext);
-  const [ value, setValue ] = useState();
+export const useStore = (key = undefined) => {
+  const [store, setStore] = useContext(StoreContext);
+  const [value, setValue] = useState();
 
   useEffect(() => {
     if (typeof key !== undefined) {
@@ -28,17 +28,17 @@ export const useStore = (key=undefined) => {
     } else {
       setValue(store);
     }
-  }, [key, store])
+  }, [key, store]);
 
-  const setFoo = v => {
+  const setFoo = (v) => {
     if (typeof key !== undefined) {
-      setStore({ ...store, [key]: v })
+      setStore({ ...store, [key]: v });
     } else {
       setStore(v);
     }
-  }
-  
+  };
+
   console.log(store);
 
-  return [ value, setFoo ];
-}
+  return [value, setFoo];
+};
