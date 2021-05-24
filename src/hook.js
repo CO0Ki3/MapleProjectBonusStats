@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 
-const StoreContext = React.createContext(null);
+export const StoreContext = React.createContext(null);
 
 const initialStore = {
   list: "",
@@ -10,6 +10,8 @@ const initialStore = {
 
 export const StoreProvider = (props) => {
   const [store, setStore] = useState(initialStore);
+
+  // console.log(store);
 
   return (
     <StoreContext.Provider value={[store, setStore]}>
@@ -38,7 +40,7 @@ export const useStore = (key = undefined) => {
     }
   };
 
-  console.log(store);
+  // console.log(value);
 
   return [value, setFoo];
 };
