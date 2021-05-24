@@ -1,8 +1,11 @@
-import { useStore } from "../hook";
+import { useContext, useState } from 'react';
+import { useStore, StoreContext } from "../hook";
 
 function Temp() {
-  const value = useStore();
-  console.log(value);
+  const value = useContext(StoreContext);
+
+  console.log(value[0])
+  
   return <p>{}</p>;
 }
 
