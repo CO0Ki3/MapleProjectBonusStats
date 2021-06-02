@@ -3,12 +3,16 @@ import Select from "./Select";
 import { ObjectList } from "../ArrayList/ObjectList";
 import SelectCompare from "./SelectCompare";
 import { Main } from "./SelectStyle";
+import { useStore } from '../hook';
 
 function SelectDisplay() {
   const [selectObjectValue, setselectObjectValue] = useState("");
 
+  const [store, setStore] = useStore("first");
+
   const handleChangeObjectValue = ({ target: { value } }) => {
     setselectObjectValue(value);
+    setStore(value);
   };
 
   return (
