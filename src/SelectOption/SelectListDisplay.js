@@ -9,16 +9,16 @@ function SelectListDisplay(props) {
 
   const [selectListValue, setSelectListValue] = useState("");
 
-  const [selectSortListValue, setSelectSortListValue] = useState("");
+  const [selectSortValue, setSelectSortListValue] = useState("");
 
-  const handleChangeListValue = ({ target: { value } }) => {
+  const handleChangeListValue = ({ target: { value, key } }) => {
     setSelectListValue(value);
-    setListStore({ value });
+    setListStore(value);
   };
 
   const handleChangeSortList = ({ target: { value } }) => {
     setSelectSortListValue(value);
-    setSortStore({ value });
+    setSortStore(value);
   };
 
   return (
